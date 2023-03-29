@@ -1,8 +1,10 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
-const PrismaClient = require('@prisma/client').PrismaClient
+import { PrismaClient } from '@prisma/client'
+import { generateToken } from '../services/auth.js'
 
 const prisma = new PrismaClient()
+
 const router = express()
 
 type User = {
@@ -41,7 +43,9 @@ router.post('/', async function (req, res) {
       },
     })
 
-    res.status(200).send({ user, message: 'Usuário registrado com sucesso.' })
+    const token = generateToken(user);
+
+    res.status(200).send({ user, token, message: 'Usuário registrado com sucesso.' })
   } catch (err) {
     return res
       .status(400)

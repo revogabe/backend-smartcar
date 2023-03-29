@@ -1,8 +1,6 @@
 import cors from 'cors'
 import createError, { HttpError } from 'http-errors'
 import express, { Request, Response, NextFunction } from 'express'
-import path from 'path'
-import cookieParser from 'cookie-parser'
 import userRegisterRouter from './routes/register.js'
 
 const app = express()
@@ -12,8 +10,6 @@ app.use(cors({ origin: '*' }))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/register', userRegisterRouter)
 
@@ -38,4 +34,4 @@ app.use(function (
   res.json({ message: 'error', error: err })
 })
 
-app.listen(3000, () => console.log('TESTANDO'))
+app.listen(3333, () => console.log('TESTANDO'))
