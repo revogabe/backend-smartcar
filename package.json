@@ -16,6 +16,7 @@
     "@types/express": "^4.17.17",
     "@types/http-errors": "^2.0.1",
     "@types/jsonwebtoken": "^9.0.1",
+    "@types/morgan": "^1.9.4",
     "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
@@ -23,7 +24,8 @@
     "dotenv": "^16.0.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^1.2.0",

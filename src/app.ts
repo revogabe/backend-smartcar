@@ -1,6 +1,8 @@
 import cors from 'cors'
 import createError, { HttpError } from 'http-errors'
 import express, { Request, Response, NextFunction } from 'express'
+import morgan from 'morgan'
+
 import userRegisterRouter from './routes/register.js'
 import userLoginRouter from './routes/login.js'
 import userGetRouter from './routes/user.js'
@@ -14,6 +16,7 @@ import supplyDeleteRouter from './routes/delete-fuel.js'
 import supplyUpdateRouter from './routes/update-fuel.js'
 
 const app = express()
+app.use(morgan('tiny'))
 
 // Then pass these options to cors:
 app.use(cors({ origin: '*' }))

@@ -8,7 +8,7 @@ export async function comparePasswords(password, hashedPassword) {
 }
 export function generateToken(payload) {
     return jwt.sign(payload, process.env.JWT_SECRET_KEY, {
-        expiresIn: 10800000, // expires in 3 hours
+        expiresIn: 60 * 60 * 3,
     });
 }
 export function decodeToken(token) {
