@@ -17,7 +17,7 @@ export async function comparePasswords(
 
 export function generateToken(payload: any): string {
   return jwt.sign(payload, process.env.JWT_SECRET_KEY, {
-    expiresIn: 10800000, // expires in 3 hours
+    expiresIn: 60 * 60 * 3,
   })
 }
 

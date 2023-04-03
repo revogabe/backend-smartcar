@@ -22,12 +22,16 @@ model User {
 model Cars {
   id        String   @id @default(uuid())
   plate     String   @unique
-  brand     String?
-  model     String?
+  renavam   String?
   color     String?
+  power     String?
+  model     String?
+  brand     String?
+  year      Int?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  userId    String?
+
+  userId String
 
   user   User?    @relation(fields: [userId], references: [id])
   Supply Supply[]
@@ -35,7 +39,8 @@ model Cars {
 
 model Supply {
   id        String   @id @default(uuid())
-  quantity  Int      @default(0)
+  price     Decimal  @default(0.00)
+  quantity  Float    @default(0.0)
   typeFuel  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -12,12 +12,15 @@ CREATE TABLE "User" (
 CREATE TABLE "Cars" (
     "id" TEXT NOT NULL,
     "plate" TEXT NOT NULL,
-    "brand" TEXT,
-    "model" TEXT,
+    "renavam" TEXT,
     "color" TEXT,
+    "power" TEXT,
+    "model" TEXT,
+    "brand" TEXT,
+    "year" INTEGER,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "userId" TEXT,
+    "userId" TEXT NOT NULL,
 
     CONSTRAINT "Cars_pkey" PRIMARY KEY ("id")
 );
@@ -25,7 +28,8 @@ CREATE TABLE "Cars" (
 -- CreateTable
 CREATE TABLE "Supply" (
     "id" TEXT NOT NULL,
-    "quantity" INTEGER NOT NULL DEFAULT 0,
+    "price" DECIMAL(65,30) NOT NULL DEFAULT 0.00,
+    "quantity" DOUBLE PRECISION NOT NULL DEFAULT 0.0,
     "typeFuel" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -41,7 +45,7 @@ CREATE UNIQUE INDEX "User_cpf_key" ON "User"("cpf");
 CREATE UNIQUE INDEX "Cars_plate_key" ON "Cars"("plate");
 
 -- AddForeignKey
-ALTER TABLE "Cars" ADD CONSTRAINT "Cars_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Cars" ADD CONSTRAINT "Cars_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Supply" ADD CONSTRAINT "Supply_carsId_fkey" FOREIGN KEY ("carsId") REFERENCES "Cars"("id") ON DELETE SET NULL ON UPDATE CASCADE;

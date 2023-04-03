@@ -2,6 +2,16 @@ import cors from 'cors'
 import createError, { HttpError } from 'http-errors'
 import express, { Request, Response, NextFunction } from 'express'
 import userRegisterRouter from './routes/register.js'
+import userLoginRouter from './routes/login.js'
+import userGetRouter from './routes/user.js'
+import userUpdateRouter from './routes/update.js'
+import carsCreateRouter from './routes/create-cars.js'
+import carsListRouter from './routes/list-cars.js'
+import carsDeleteRouter from './routes/delete-cars.js'
+import supplyCreateRouter from './routes/create-fuel.js'
+import supplyListRouter from './routes/list-fuel.js'
+import supplyDeleteRouter from './routes/delete-fuel.js'
+import supplyUpdateRouter from './routes/update-fuel.js'
 
 const app = express()
 
@@ -11,7 +21,17 @@ app.use(cors({ origin: '*' }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/register', userRegisterRouter)
+app.use('/api/register', userRegisterRouter)
+app.use('/api/login', userLoginRouter)
+app.use('/api/user', userGetRouter)
+app.use('/api/update', userUpdateRouter)
+app.use('/api/cars/create', carsCreateRouter)
+app.use('/api/cars/list', carsListRouter)
+app.use('/api/cars/delete', carsDeleteRouter)
+app.use('/api/supply/create', supplyCreateRouter)
+app.use('/api/supply/list', supplyListRouter)
+app.use('/api/supply/delete', supplyDeleteRouter)
+app.use('/api/supply/update', supplyUpdateRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req: Request, res: Response, next: NextFunction) {
