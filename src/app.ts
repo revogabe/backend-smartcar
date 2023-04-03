@@ -1,4 +1,5 @@
 import cors from 'cors'
+import dotenv from 'dotenv'
 import createError, { HttpError } from 'http-errors'
 import express, { Request, Response, NextFunction } from 'express'
 import morgan from 'morgan'
@@ -17,6 +18,9 @@ import supplyUpdateRouter from './routes/update-fuel.js'
 
 const app = express()
 app.use(morgan('tiny'))
+
+dotenv.config()
+const port = process.env.PORT || 5000
 
 // Then pass these options to cors:
 app.use(cors({ origin: '*' }))
@@ -57,4 +61,4 @@ app.use(function (
   res.json({ message: 'error', error: err })
 })
 
-app.listen(3333, () => console.log('TESTANDO'))
+app.listen(port, () => console.log('TESTANDO'))
