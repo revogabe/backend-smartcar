@@ -15,6 +15,7 @@ import supplyDeleteRouter from './routes/delete-fuel.js';
 import supplyUpdateRouter from './routes/update-fuel.js';
 const app = express();
 app.use(morgan('tiny'));
+morgan(':method :url :status :res[content-length] - :response-time ms');
 // Then pass these options to cors:
 app.use(cors({ origin: '*' }));
 app.use(express.json());
